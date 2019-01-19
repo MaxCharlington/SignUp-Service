@@ -1,0 +1,14 @@
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Server 1.1.exe.config
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Server 1.1.exe
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Server 1.1.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\ClassLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\ClassLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Release\Server 1.1.csprojAssemblyReference.cache
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Release\Server 1.1.csproj.CoreCompileInputs.cache
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Release\Server 1.1.csproj.CopyComplete
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Release\Server 1.1.exe
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Release\Server 1.1.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\ToolLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\ToolLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Database.mdf
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Database_log.ldf

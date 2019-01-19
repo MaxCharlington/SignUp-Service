@@ -1,0 +1,12 @@
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Debug\Server 1.1.exe.config
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Debug\Server 1.1.exe
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Debug\Server 1.1.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Debug\ClassLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Debug\ClassLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Debug\Server 1.1.csprojAssemblyReference.cache
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Debug\Server 1.1.csproj.CoreCompileInputs.cache
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Debug\Server 1.1.csproj.CopyComplete
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Debug\Server 1.1.exe
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Debug\Server 1.1.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Debug\ToolLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Debug\ToolLibrary.pdb

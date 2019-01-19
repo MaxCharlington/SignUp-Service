@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server 1.1", "Server 1.1\Server 1.1.csproj", "{82B62FF9-64BB-4708-96B1-A0D94A7A122B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{75EEE30E-515F-429A-83F5-E177529CA63E}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "WebSite\", "{CACE4612-505D-465A-9CC0-1BD7809EE80A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_60471"
+		Debug.AspNetCompiler.PhysicalPath = "WebSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60471\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_60471"
+		Release.AspNetCompiler.PhysicalPath = "WebSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60471\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60471"
+		SlnRelativePath = "WebSite\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolLibrary", "ToolLibrary\ToolLibrary.csproj", "{936B3895-44A2-4D0B-981F-F54A28260DEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{28BDE95B-A678-4455-AD49-101D5A7BBE6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4D55BE2-D881-44AF-93F3-3B0E3BEFED9F}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation.txt = Documentation.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82B62FF9-64BB-4708-96B1-A0D94A7A122B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B62FF9-64BB-4708-96B1-A0D94A7A122B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B62FF9-64BB-4708-96B1-A0D94A7A122B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B62FF9-64BB-4708-96B1-A0D94A7A122B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75EEE30E-515F-429A-83F5-E177529CA63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EEE30E-515F-429A-83F5-E177529CA63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EEE30E-515F-429A-83F5-E177529CA63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EEE30E-515F-429A-83F5-E177529CA63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CACE4612-505D-465A-9CC0-1BD7809EE80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACE4612-505D-465A-9CC0-1BD7809EE80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CACE4612-505D-465A-9CC0-1BD7809EE80A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACE4612-505D-465A-9CC0-1BD7809EE80A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{936B3895-44A2-4D0B-981F-F54A28260DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{936B3895-44A2-4D0B-981F-F54A28260DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{936B3895-44A2-4D0B-981F-F54A28260DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{936B3895-44A2-4D0B-981F-F54A28260DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28BDE95B-A678-4455-AD49-101D5A7BBE6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28BDE95B-A678-4455-AD49-101D5A7BBE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28BDE95B-A678-4455-AD49-101D5A7BBE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28BDE95B-A678-4455-AD49-101D5A7BBE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B917E6F0-9C8A-48CC-B3C9-7FE64D90FB99}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\obj\Debug\ToolLibrary.csprojAssemblyReference.cache
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\obj\Debug\ToolLibrary.csproj.CoreCompileInputs.cache
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\bin\Debug\ToolLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\bin\Debug\ToolLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\bin\Debug\ClassLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\bin\Debug\ClassLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\obj\Debug\ToolLibrary.csproj.CopyComplete
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\obj\Debug\ToolLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\ToolLibrary\obj\Debug\ToolLibrary.pdb
