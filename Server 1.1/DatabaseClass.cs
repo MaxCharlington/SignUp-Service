@@ -10,7 +10,7 @@ namespace Database
     {
         private static OleDbConnection database = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb;");
         
-        public static List<object> Execute(string command) 
+        private static List<object> Execute(string command) 
         {
             List<object> rez = new List<object>();
             try
@@ -34,7 +34,7 @@ namespace Database
             return rez;
         }
 
-        public static void ExecuteNonQuery(string command) {
+        private static void ExecuteNonQuery(string command) {
             database.Open();
             OleDbCommand commandDB = new OleDbCommand(command, database);
             try {

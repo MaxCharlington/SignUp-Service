@@ -27,11 +27,11 @@ namespace TestClient
         {
             static void Main()
             {
-                foreach (var item in DatabaseClass.Execute("SELECT [Id], [Login] FROM [Users] WHERE [Login] = 'a'"))
-                {
-                    Console.WriteLine(item);
-                }
-                DatabaseClass.ExecuteNonQuery("UPDATE [Users] SET [Login] = 'maxcharlington' WHERE [ID] = 0");
+            //    foreach (var item in DatabaseClass.Execute("SELECT [Id], [Login] FROM [Users] WHERE [Login] = 'a'"))
+            //    {
+            //        Console.WriteLine(item);
+            //    }
+            //    DatabaseClass.ExecuteNonQuery("UPDATE [Users] SET [Login] = 'maxcharlington' WHERE [ID] = 0");
                 Console.ReadKey();
             }
         }
