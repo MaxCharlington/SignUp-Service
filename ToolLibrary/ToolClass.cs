@@ -24,7 +24,7 @@ namespace ToolLibrary
         private static object MessageLock = new object();
         public static async Task Print(string message, ConsoleColor consoleColor = ConsoleColor.White)
         {
-            await ThreadManager.GetInstance().RunAction(() =>
+            await Task.Run(() =>
             {
                 lock (MessageLock)
                 {
