@@ -1,48 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
+using Npgsql;
 
 using ToolLibrary;
 
 namespace Database
 {
-    public static class DatabaseClass
+    public class DatabaseClass
     {
-        private static OleDbConnection database = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb;");
-        
-        private static List<object> Execute(string command) 
+        private static string connstring = "Server=192.168.0.77; Port=5432; User Id=postgres; Password=maxcharlington;";
+        private static DatabaseClass instance;
+        private static NpgsqlConnection connection;
+
+        private DatabaseClass() { }        
+
+        public static DatabaseClass GetInstance()
+        {
+            if (instance == null)
+                instance = new DatabaseClass();
+            return instance;
+        }
+
+        public void OpenConnection() {
+            connection = new NpgsqlConnection(connstring);
+            connection.Open();
+        }
+
+        public void CloseConnection()
+        {
+            connection.Close();
+        }
+
+        private static List<object> Execute(string commandString) 
         {
             List<object> rez = new List<object>();
             try
             {
-                database.Open();
-                OleDbCommand commandDB = new OleDbCommand(command, database);
-                OleDbDataReader reader = commandDB.ExecuteReader();
-                while (reader.Read())
+                NpgsqlCommand command = new NpgsqlCommand(commandString, connection);
+                NpgsqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
                 {
-                    for (int i = 0; i < reader.FieldCount; i++)
+                    for (int i = 0; i < dataReader.VisibleFieldCount; i++)
                     {
-                        rez.Add(reader.GetValue(i));
-
+                        rez.Add(dataReader.GetValue(i));
                     }
                 }
             }
-            finally
+            catch (Exception e)
             {
-                database.Close();
+                ToolClass.Print(e.Message, ConsoleColor.Red);
             }
             return rez;
         }
 
-        private static void ExecuteNonQuery(string command) {
-            database.Open();
-            OleDbCommand commandDB = new OleDbCommand(command, database);
-            try {
-                commandDB.ExecuteNonQuery();
-            }
-            finally {
-                database.Close();
-            }
+        private static void ExecuteNonQuery(string commandString) {
+            NpgsqlCommand command = new NpgsqlCommand(commandString, connection);
+            command.ExecuteNonQueryAsync();
         }
     }
 }

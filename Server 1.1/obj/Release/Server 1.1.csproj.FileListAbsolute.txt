@@ -10,5 +10,5 @@ M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Release\Server 
 M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\obj\Release\Server 1.1.pdb
 M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\ToolLibrary.dll
 M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\ToolLibrary.pdb
-M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Database.mdf
-M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Database_log.ldf
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\Npgsql.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Server 1.1\bin\Release\System.Threading.Tasks.Extensions.dll

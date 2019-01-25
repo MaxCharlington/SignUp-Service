@@ -12,10 +12,12 @@ namespace Server
     public static class Server
     {
         private static HttpListener httpListener { set; get; }
+        private static DatabaseClass Database { get; } = DatabaseClass.GetInstance();
         public static int sessionRequestCount { private set; get; } = 0;
 
         public static void StartServer()
         {
+            Database.OpenConnection();
             httpListener = new HttpListener();
             httpListener.Prefixes.Add("http://+/");
             httpListener.Start();
@@ -78,6 +80,7 @@ namespace Server
         public static void StopServer()
         {
             httpListener.Stop();
+            Database.CloseConnection();
         }
     }    
 }

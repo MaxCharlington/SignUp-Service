@@ -19,7 +19,7 @@ namespace Server
         
         private static async Task HandleServerRequests()
         {
-            ToolClass.Print("Server is open for HTTP requests", ConsoleColor.Green);
+            ToolClass.Print("Server is open for requests", ConsoleColor.Green);
             while (!finished)
             {
                 try
