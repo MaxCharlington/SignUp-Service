@@ -1,3 +1,6 @@
+
+Global IP:				5.164.216.220
+
 server PC:				192.168.0.77
 development PC:			192.168.0.78
 PostgreSQL:				192.168.0.77:5432
