@@ -1,7 +1,5 @@
 ﻿using System.Runtime.Serialization;
 
-using ToolLibrary;
-
 namespace ClassLibrary
 {
     [DataContract]
@@ -11,7 +9,7 @@ namespace ClassLibrary
         public ContactInfoClass ContactInfo { get; set; }
 
         [DataMember]
-        public int Id { get; set; }
+        public int Id { get; set; } = -1;
         //-1 - unregistred user
         //>-1 - valid id
         
@@ -40,6 +38,13 @@ namespace ClassLibrary
         public UserClass(int id, string login, string passwordHash, ContactInfoClass contactInfo)
         {
             Id = id;
+            Login = login;
+            PasswordHash = passwordHash;
+            ContactInfo = contactInfo;
+        }
+
+        public UserClass(string login, string passwordHash, ContactInfoClass contactInfo)
+        {
             Login = login;
             PasswordHash = passwordHash;
             ContactInfo = contactInfo;

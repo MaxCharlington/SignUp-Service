@@ -1,5 +1,5 @@
 
-Global IP:				5.164.216.220
+Global IP:				95.79.50.186
 
 server PC:				192.168.0.77
 development PC:			192.168.0.78
