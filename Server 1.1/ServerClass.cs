@@ -39,6 +39,11 @@ namespace Server
                 {
                     try
                     {
+                        request.Response.StatusCode = (int)HttpStatusCode.OK;
+                        if (request.Requested.Cookies.Count == 0)
+                        {
+                            request.Response.SetCookie(new Cookie("session", Security.GetUniqueKey()));
+                        }
                         const string path = @"M:\YandexDisk\Projects\In progress\SignUp Service\WebSite";
                         var url = request.Requested.RawUrl;
                         if (url == "/")
@@ -54,18 +59,21 @@ namespace Server
                     }
                     catch (FileNotFoundException)
                     {
+                        request.Response.StatusCode = (int)HttpStatusCode.NotFound;
                         response = new byte[0];
                     }
                 }
                 else if (request.Requested.HttpMethod == "POST")
                 {
+                    request.Response.StatusCode = (int)HttpStatusCode.OK;
                     RequestContext ctx = request.GetPostRequestData();
                     string requestText = JSON.Stringify(ctx);
                     response = Encoding.UTF8.GetBytes(requestText);
                     request.Response.ContentType = "application/json";
                 }
-                else
+                else //Unexpected HTTP method
                 {
+                    request.Response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
                     response = new byte[0];
                 }
                 request.Response.ContentLength64 = response.Length;

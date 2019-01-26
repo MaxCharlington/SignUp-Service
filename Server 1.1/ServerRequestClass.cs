@@ -21,12 +21,16 @@ namespace Server
 
         public RequestContext GetPostRequestData()
         {
-            Stream body = Requested.InputStream;
-            StreamReader reader = new StreamReader(body);
-            string json = reader.ReadToEnd();
-            RequestContext context = new RequestContext();
-            context = (RequestContext)JSON.Parse(json, context.GetType());
-            return context;
+            if (Requested.HttpMethod == "POST")
+            {
+                Stream body = Requested.InputStream;
+                StreamReader reader = new StreamReader(body);
+                string json = reader.ReadToEnd();
+                RequestContext context = new RequestContext();
+                context = (RequestContext)JSON.Parse(json, context.GetType());
+                return context;
+            }
+            else return null;
         }
     }
 }

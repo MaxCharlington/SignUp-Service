@@ -24,7 +24,6 @@ namespace ToolLibrary
             DataContractJsonSerializer ser = new DataContractJsonSerializer(type);
             deserialized = ser.ReadObject(stream);
             stream.Close();
-            Console.WriteLine(type.ToString());
             return deserialized;
         }
         

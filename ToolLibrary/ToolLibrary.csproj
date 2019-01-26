@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binary.cs" />
     <Compile Include="ConcurrentQueueExtentionClass.cs" />
     <Compile Include="HardwareClass.cs" />
     <Compile Include="JSONClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security.cs" />
     <Compile Include="ThreadClass.cs" />
     <Compile Include="TimerClass.cs" />
     <Compile Include="ToolClass.cs" />

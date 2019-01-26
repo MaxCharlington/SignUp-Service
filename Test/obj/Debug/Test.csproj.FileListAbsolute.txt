@@ -12,16 +12,16 @@ M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\TestClient.exe.
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\TestClient.exe
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\TestClient.pdb
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\ClassLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Npgsql.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Server 1.1.exe
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\ToolLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\System.Threading.Tasks.Extensions.dll
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\ClassLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Server 1.1.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Server 1.1.exe.config
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\ToolLibrary.pdb
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Debug\Test.csprojAssemblyReference.cache
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Debug\Test.csproj.CopyComplete
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Debug\TestClient.exe
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Debug\TestClient.pdb
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\ToolLibrary.dll
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\ToolLibrary.pdb
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Server 1.1.exe
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Server 1.1.pdb
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Server 1.1.exe.config
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\Npgsql.dll
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Debug\System.Threading.Tasks.Extensions.dll

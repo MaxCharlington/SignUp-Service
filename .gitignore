@@ -342,3 +342,8 @@ healthchecksdb
 
 # Project specific stuff
 Test/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.ico

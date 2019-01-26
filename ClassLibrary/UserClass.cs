@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace ClassLibrary
 {
@@ -18,6 +19,9 @@ namespace ClassLibrary
 
         [DataMember]
         public string PasswordHash { get; set; }
+        
+        [DataMember]
+        public List<string> Sessions { get; set; }
 
         public UserClass()
         {
@@ -35,7 +39,8 @@ namespace ClassLibrary
             Id = -1;
         }
 
-        public UserClass(int id, string login, string passwordHash, ContactInfoClass contactInfo)
+        //ctor for backend
+        public UserClass(int id, string login, string passwordHash, List<string> sessions, ContactInfoClass contactInfo = null)
         {
             Id = id;
             Login = login;
@@ -43,7 +48,7 @@ namespace ClassLibrary
             ContactInfo = contactInfo;
         }
 
-        public UserClass(string login, string passwordHash, ContactInfoClass contactInfo)
+        public UserClass(string login, string passwordHash, ContactInfoClass contactInfo = null)
         {
             Login = login;
             PasswordHash = passwordHash;
