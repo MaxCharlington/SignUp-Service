@@ -9,7 +9,7 @@ namespace Database
 {
     public class DatabaseClass
     {
-        private static string connstring = "Server=192.168.0.77; Port=5432; User Id=postgres; Password=maxcharlington;";
+        private static string connstring = "Server=192.168.0.77; Port=5432; User Id=ServerSignUp; Password=postgresqlDB; Database=postgres;";
         private static DatabaseClass instance;
         private static NpgsqlConnection connection;
 

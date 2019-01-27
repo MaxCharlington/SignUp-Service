@@ -3,7 +3,7 @@
 namespace ClassLibrary
 {
     [DataContract]
-    class SignUpClass
+    public class SignUpClass
     {
         [DataMember]
         public CompanyClass Company { get; set; }
