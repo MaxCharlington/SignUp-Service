@@ -4,12 +4,13 @@ using System.Threading.Tasks;
 using Npgsql;
 
 using ToolLibrary;
+using ClassLibrary;
 
 namespace Database
 {
     public class DatabaseClass
     {
-        private static string connstring = "Server=192.168.0.77; Port=5432; User Id=ServerSignUp; Password=postgresqlDB; Database=postgres;";
+        private static string connstring = "Server=192.168.0.77; Port=5432; User Id=ServerSignUp; Password=postgresqlDB; Database=SignUp;";
         private static DatabaseClass instance;
         private static NpgsqlConnection connection;
 
@@ -32,7 +33,7 @@ namespace Database
             connection.Close();
         }
 
-        private static async Task<List<object>> ExecuteAsync(string commandString) 
+        public async Task<List<object>> ExecuteAsync(string commandString) 
         {
             List<object> rez = new List<object>();
             try
@@ -54,9 +55,18 @@ namespace Database
             return rez;
         }
 
-        private static async Task ExecuteNonQuery(string commandString) {
+        public async Task ExecuteNonQueryAsync(string commandString) {
             NpgsqlCommand command = new NpgsqlCommand(commandString, connection);
             await command.ExecuteNonQueryAsync();
+        }
+
+        public async Task CreateSession(string sessionId, int userId = -1) {
+            await ExecuteNonQueryAsync($"INSERT INTO Sessions (SessionId, UserId) VALUES ('{sessionId}', '{userId}')");
+        }
+
+        public async Task CreateSession(SessionClass session)
+        {
+            await ExecuteNonQueryAsync($"INSERT INTO Sessions (SessionId, UserId) VALUES ('{session.SessionId}', '{session.UserId}')");
         }
     }
 }

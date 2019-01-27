@@ -21,3 +21,4 @@ M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\bin\Debug\ClassLi
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Debug\ClassLibrary.dll
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Debug\ClassLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Debug\ClassLibrary.csprojAssemblyReference.cache

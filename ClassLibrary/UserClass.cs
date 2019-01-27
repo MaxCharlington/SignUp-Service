@@ -20,9 +20,6 @@ namespace ClassLibrary
         [DataMember]
         public string PasswordHash { get; set; }
         
-        [DataMember]
-        public List<string> Sessions { get; set; }
-
         public UserClass()
         {
             ContactInfo = new ContactInfoClass();
@@ -40,7 +37,7 @@ namespace ClassLibrary
         }
 
         //ctor for backend
-        public UserClass(int id, string login, string passwordHash, List<string> sessions, ContactInfoClass contactInfo = null)
+        public UserClass(int id, string login, string passwordHash, ContactInfoClass contactInfo = null)
         {
             Id = id;
             Login = login;

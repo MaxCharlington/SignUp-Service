@@ -26,7 +26,10 @@ namespace PgSql
     public class PostGreSQL
     {
         public static void Main() {
-            Console.WriteLine(new SignUpClass().ToJSON());
+            var database = DatabaseClass.GetInstance();
+            database.OpenConnection();
+            database.ExecuteNonQueryAsync($"INSERT INTO Sessions (SessionId, UserId) VALUES ('{"kjhbf"}', '{1}')");
+            database.CloseConnection();
             Console.ReadKey();
         }
     }

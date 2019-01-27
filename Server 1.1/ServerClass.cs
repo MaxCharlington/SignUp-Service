@@ -86,7 +86,9 @@ namespace Server
                     request.Response.StatusCode = (int)HttpStatusCode.OK;
                     if (request.Requested.Cookies.Count == 0)
                     {
-                        request.Response.SetCookie(new Cookie("session", Security.GetUniqueKey()));
+                        string sessionId = Security.GetUniqueKey();
+                        Database.CreateSession(sessionId);
+                        request.Response.SetCookie(new Cookie("session", sessionId));
                     }
                     const string path = @"M:\YandexDisk\Projects\In progress\SignUp Service\WebSite";
                     var url = request.Requested.RawUrl;
