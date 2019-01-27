@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Npgsql;
 
 using ToolLibrary;
@@ -31,14 +32,14 @@ namespace Database
             connection.Close();
         }
 
-        private static List<object> Execute(string commandString) 
+        private static async Task<List<object>> ExecuteAsync(string commandString) 
         {
             List<object> rez = new List<object>();
             try
             {
                 NpgsqlCommand command = new NpgsqlCommand(commandString, connection);
-                NpgsqlDataReader dataReader = command.ExecuteReader();
-                while (dataReader.Read())
+                NpgsqlDataReader dataReader = (NpgsqlDataReader) await command.ExecuteReaderAsync();
+                while (await dataReader.ReadAsync())
                 {
                     for (int i = 0; i < dataReader.VisibleFieldCount; i++)
                     {
@@ -53,9 +54,9 @@ namespace Database
             return rez;
         }
 
-        private static void ExecuteNonQuery(string commandString) {
+        private static async Task ExecuteNonQuery(string commandString) {
             NpgsqlCommand command = new NpgsqlCommand(commandString, connection);
-            command.ExecuteNonQueryAsync();
+            await command.ExecuteNonQueryAsync();
         }
     }
 }

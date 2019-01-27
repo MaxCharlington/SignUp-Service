@@ -9,86 +9,128 @@ using Database;
 
 namespace Server
 {
-    public static class Server
+    public class Server : IServer
     {
-        private static HttpListener httpListener { set; get; }
-        private static DatabaseClass Database { get; } = DatabaseClass.GetInstance();
-        public static int sessionRequestCount { private set; get; } = 0;
-
-        public static void StartServer()
+        //Singleton
+        private static Server instance = null;
+        private Server() { }
+        public static IServer GetInstance()
         {
-            Database.OpenConnection();
-            httpListener = new HttpListener();
-            httpListener.Prefixes.Add("http://+/");
-            httpListener.Start();
+            if (instance == null)
+                instance = new Server();
+            return instance;
         }
 
-        public static async Task<Request> GetRequest()
+        //Event interface
+        public delegate void ServerEvent();
+        public event ServerEvent onStart;
+        public event ServerEvent onStop;
+        public event ServerEvent onRequestAdded;
+        public event ServerEvent onRequestHandled;
+
+        public ushort Port { get; private set; }
+        private HttpListener _HttpListener;
+        private DatabaseClass Database { get; } = DatabaseClass.GetInstance();
+        
+        public int SessionRequestCount { private set; get; } = 0;
+        private int UnhandledRequestsCount = 0;
+
+        //IServer implementation
+        public void StartServer(ushort port = 80)
         {
-            HttpListenerContext context = await httpListener.GetContextAsync();
+            Port = port;
+            onStart += () => { }; 
+            onStop += () => { };
+            onRequestAdded += () => { UnhandledRequestsCount++; }; 
+            onRequestHandled = () => { UnhandledRequestsCount--; SessionRequestCount++; };
+            Database.OpenConnection();
+            _HttpListener = new HttpListener();
+            _HttpListener.Prefixes.Add($"http://*:{Port}/");
+            _HttpListener.Start();
+            Task.Run(() => onStart());
+        }
+        
+        public void StopServer()
+        {            
+            _HttpListener.Stop();
+            while (UnhandledRequestsCount != 0) { }
+            Database.CloseConnection();
+            Task.Run(() => onStop());
+        }
+
+
+        public Request GetRequest()
+        {
+            HttpListenerContext context = _HttpListener.GetContext();
             HttpListenerRequest request = context.Request;
+            Task.Run(() => onRequestAdded());
+            return new Request(context.Response, request);
+        }
+        
+        public async Task<Request> GetRequestAsync()
+        {
+            HttpListenerContext context = await _HttpListener.GetContextAsync();
+            HttpListenerRequest request = context.Request;
+            Task.Run(() => onRequestAdded());
             return new Request(context.Response, request);
         }
 
-        public static async Task RespondRequest(Request request)
+
+        public void RespondRequest(Request request)
         {
-            await Task.Run(() =>
+            byte[] response;
+            if (request.Requested.HttpMethod == "GET")
             {
-                byte[] response;
-                if (request.Requested.HttpMethod == "GET")
-                {
-                    try
-                    {
-                        request.Response.StatusCode = (int)HttpStatusCode.OK;
-                        if (request.Requested.Cookies.Count == 0)
-                        {
-                            request.Response.SetCookie(new Cookie("session", Security.GetUniqueKey()));
-                        }
-                        const string path = @"M:\YandexDisk\Projects\In progress\SignUp Service\WebSite";
-                        var url = request.Requested.RawUrl;
-                        if (url == "/")
-                        {
-                            response = Encoding.UTF8.GetBytes(File.ReadAllText(path + @"\index.html"));
-                            request.Response.ContentType = "text/html; charset=UTF-8";
-                        }
-                        else
-                        {
-                            response = Encoding.UTF8.GetBytes(File.ReadAllText(path + url.Replace('/', '\\')));
-                            request.Response.ContentType = $"{MimeMapping.GetMimeMapping(url)}; charset=UTF-8";
-                        }
-                    }
-                    catch (FileNotFoundException)
-                    {
-                        request.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                        response = new byte[0];
-                    }
-                }
-                else if (request.Requested.HttpMethod == "POST")
+                try
                 {
                     request.Response.StatusCode = (int)HttpStatusCode.OK;
-                    RequestContext ctx = request.GetPostRequestData();
-                    string requestText = JSON.Stringify(ctx);
-                    response = Encoding.UTF8.GetBytes(requestText);
-                    request.Response.ContentType = "application/json";
+                    if (request.Requested.Cookies.Count == 0)
+                    {
+                        request.Response.SetCookie(new Cookie("session", Security.GetUniqueKey()));
+                    }
+                    const string path = @"M:\YandexDisk\Projects\In progress\SignUp Service\WebSite";
+                    var url = request.Requested.RawUrl;
+                    if (url == "/")
+                    {
+                        response = Encoding.UTF8.GetBytes(File.ReadAllText(path + @"\index.html"));
+                        request.Response.ContentType = "text/html; charset=UTF-8";
+                    }
+                    else
+                    {
+                        response = Encoding.UTF8.GetBytes(File.ReadAllText(path + url.Replace('/', '\\')));
+                        request.Response.ContentType = $"{MimeMapping.GetMimeMapping(url)}; charset=UTF-8";
+                    }
                 }
-                else //Unexpected HTTP method
+                catch (FileNotFoundException)
                 {
-                    request.Response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
+                    request.Response.StatusCode = (int)HttpStatusCode.NotFound;
                     response = new byte[0];
                 }
-                request.Response.ContentLength64 = response.Length;
-                using (Stream output = request.Response.OutputStream)
-                {
-                    output.Write(response, 0, response.Length);
-                }
-                sessionRequestCount++;
-            });
+            }
+            else if (request.Requested.HttpMethod == "POST")
+            {
+                request.Response.StatusCode = (int)HttpStatusCode.OK;
+                RequestContext ctx = request.GetPostRequestData();
+                string requestText = JSON.Stringify(ctx);
+                response = Encoding.UTF8.GetBytes(requestText);
+                request.Response.ContentType = "application/json";
+            }
+            else //Unexpected HTTP method
+            {
+                request.Response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
+                response = new byte[0];
+            }
+            request.Response.ContentLength64 = response.Length;
+            using (Stream output = request.Response.OutputStream)
+            {
+                output.Write(response, 0, response.Length);
+            }
+            Task.Run(() => onRequestHandled());
         }
 
-        public static void StopServer()
+        public async Task RespondRequestAsync(Request request)
         {
-            httpListener.Stop();
-            Database.CloseConnection();
+            await Task.Run(() => RespondRequest(request));
         }
-    }    
+    }
 }

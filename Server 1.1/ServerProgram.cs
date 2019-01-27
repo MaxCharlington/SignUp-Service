@@ -8,34 +8,34 @@ namespace Server
     class ServerInstance
     {
         private static bool finished = false;
+        private static Server server = (Server)Server.GetInstance();
         
         private static void Main()
         {
             Console.Title = "Server - SignUp Service";
-            Server.StartServer();
+            server.StartServer();
             HandleServerRequests();
             AdminCommandHandler();
         }
         
         private static async Task HandleServerRequests()
         {
-            ToolClass.Print("Server is open for requests", ConsoleColor.Green);
             while (!finished)
             {
                 try
                 {
-                    Server.RespondRequest(await Server.GetRequest());
+                    server.RespondRequestAsync(await server.GetRequestAsync());
                 }
                 catch
                 {
                     continue;
                 }
             }
-            ToolClass.Print("Server closed for HTTP requests", ConsoleColor.Red);
         }
         
         private static void AdminCommandHandler()
-        {            
+        {
+            ToolClass.Print("Server is open for requests", ConsoleColor.Green);
             while (!finished)
             {
                 string internalCommand = Console.ReadLine();
@@ -43,18 +43,19 @@ namespace Server
                 {
                     case "stop":
                         finished = true;
-                        Server.StopServer();
+                        server.StopServer();
                         break;
                     case "cpu":
                         ToolClass.Print($"Current CPU usage is {Hardware.CPUUsage()}%\nCount of server threads is {Hardware.ThreadCount()}", ConsoleColor.Yellow);
                         break;
                     case "req":
-                        ToolClass.Print($"{Server.sessionRequestCount} requests are handled in the session", ConsoleColor.Yellow);
+                        ToolClass.Print($"{server.SessionRequestCount} requests are handled in the session", ConsoleColor.Yellow);
                         break;
                     default:
                         break;
                 }
             }
+            ToolClass.Print("Server closed for HTTP requests", ConsoleColor.Red);
             Console.ReadKey();
         }
     }
