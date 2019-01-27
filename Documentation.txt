@@ -4,3 +4,37 @@ Global IP:				95.79.50.186
 server PC:				192.168.0.77
 development PC:			192.168.0.78
 PostgreSQL:				192.168.0.77:5432
+
+
+Request IDs:
+1 - reg user
+
+
+{
+	"Comment":"",
+	"Company":{
+		"ContactInfo":{
+			"Address":"",
+			"Email":"",
+			"PhoneNumber":""
+		},
+		"Id":-1,
+		"Login":"",
+		"PasswordHash":"",
+		"Sessions":null,
+		"Name":"",
+		"Services":[],
+		"WorkTime":{
+			"BreakTimes":[{
+				"Beginning":"",
+				"Date":"",
+				"Length":""
+			},{
+				"Beginning":"",
+				"Date":"",
+				"Length":""
+			},{
+				"Beginning":"",
+				"Date":"",
+				"Length":""
+			},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""}],"WorkTimes":[{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""},{"Beginning":"","Date":"","Length":""}]},"Workers":[]},"Confirmed":false,"Service":{"Length":{"Beginning":"","Date":"","Length":""},"Name":"","Price":-1},"Time":{"Beginning":"","Date":"","Length":""},"User":{"ContactInfo":{"Address":"","Email":"","PhoneNumber":""},"Id":-1,"Login":"","PasswordHash":"","Sessions":null}}

@@ -14,8 +14,12 @@ namespace Server
         {
             Console.Title = "Server - SignUp Service";
             server.StartServer();
+
+            //Handles incoming HTTP requests
             HandleServerRequests();
-            AdminCommandHandler();
+
+            //Handles console UI and stops server
+            HandleConsoleCommands().Wait();
         }
         
         private static async Task HandleServerRequests()
@@ -33,30 +37,33 @@ namespace Server
             }
         }
         
-        private static void AdminCommandHandler()
+        private static async Task HandleConsoleCommands()
         {
-            ToolClass.Print("Server is open for requests", ConsoleColor.Green);
-            while (!finished)
+            await Task.Run(() =>
             {
-                string internalCommand = Console.ReadLine();
-                switch (internalCommand)
+                ToolClass.Print("Server is open for requests", ConsoleColor.Green);
+                while (!finished)
                 {
-                    case "stop":
-                        finished = true;
-                        server.StopServer();
-                        break;
-                    case "cpu":
-                        ToolClass.Print($"Current CPU usage is {Hardware.CPUUsage()}%\nCount of server threads is {Hardware.ThreadCount()}", ConsoleColor.Yellow);
-                        break;
-                    case "req":
-                        ToolClass.Print($"{server.SessionRequestCount} requests are handled in the session", ConsoleColor.Yellow);
-                        break;
-                    default:
-                        break;
+                    string internalCommand = Console.ReadLine();
+                    switch (internalCommand)
+                    {
+                        case "stop":
+                            finished = true;
+                            server.StopServer();
+                            break;
+                        case "cpu":
+                            ToolClass.Print($"Current CPU usage is {Hardware.CPUUsage()}%\nCount of server threads is {Hardware.ThreadCount()}", ConsoleColor.Yellow);
+                            break;
+                        case "req":
+                            ToolClass.Print($"{server.SessionRequestCount} requests are handled in the session", ConsoleColor.Yellow);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
-            ToolClass.Print("Server closed for HTTP requests", ConsoleColor.Red);
-            Console.ReadKey();
+                ToolClass.Print("Server closed for HTTP requests", ConsoleColor.Red);
+                Console.ReadKey();
+            });
         }
     }
 }

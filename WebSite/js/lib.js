@@ -1,15 +1,11 @@
 //Request ctor
-function CreateRequest(cmdId, Login, Password, StrData, IntData) {
+function CreateRequest(cmdId, StrData, IntData) {
     var Request = {
         cmdId: null,
-        Login: null,
-        Password: null,
         StrData: null,
         IntData: null,
     };
     Request.cmdId = cmdId;
-    Request.Login = Login;
-    Request.Password = Password;
     Request.StrData = StrData;
     Request.IntData = IntData;
     return Request;
@@ -37,14 +33,14 @@ function ServerResponseTo(request) {
                 alert(response.IntData);
            });
 */
-function ServerResponseAsyncTo(request, func) {
+function ServerResponseAsyncTo(request, onRespond) {
     var req = new XMLHttpRequest();
     req.open("POST", "", true);
     req.send(JSON.stringify(request));
     req.onreadystatechange = function () {
         if (req.readyState != 4) return;
         if (req.status == 200) {
-            func(JSON.parse(req.responseText));
+            onRespond(req.responseText);
             req.abort();
         }
     };

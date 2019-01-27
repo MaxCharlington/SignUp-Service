@@ -1,5 +1,5 @@
-var request = CreateRequest(1, 'login', 'password', "message", 128);
+var request = CreateRequest(0, "message", 128);
 
 ServerResponseAsyncTo(request, function (response) {
-    alert(response.IntData);
+    alert(sha256(response));
 });
