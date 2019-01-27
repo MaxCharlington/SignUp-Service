@@ -1,5 +1,6 @@
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\bin\Release\ClassLibrary.dll
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\bin\Release\ClassLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Release\ClassLibrary.csprojAssemblyReference.cache
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Release\ClassLibrary.csproj.CoreCompileInputs.cache
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Release\ClassLibrary.dll
 M:\YandexDisk\Projects\In progress\SignUp Service\ClassLibrary\obj\Release\ClassLibrary.pdb

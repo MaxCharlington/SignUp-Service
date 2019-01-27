@@ -12,16 +12,16 @@ M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\TestClient.ex
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\TestClient.exe
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\TestClient.pdb
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\ClassLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Npgsql.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Server 1.1.exe
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\ToolLibrary.dll
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\System.Threading.Tasks.Extensions.dll
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\ClassLibrary.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Server 1.1.pdb
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Server 1.1.exe.config
+M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\ToolLibrary.pdb
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Release\Test.csprojAssemblyReference.cache
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Release\Test.csproj.CoreCompileInputs.cache
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Release\Test.csproj.CopyComplete
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Release\TestClient.exe
 M:\YandexDisk\Projects\In progress\SignUp Service\Test\obj\Release\TestClient.pdb
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\ToolLibrary.dll
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\ToolLibrary.pdb
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Server 1.1.exe
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Server 1.1.pdb
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Server 1.1.exe.config
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\Npgsql.dll
-M:\YandexDisk\Projects\In progress\SignUp Service\Test\bin\Release\System.Threading.Tasks.Extensions.dll
