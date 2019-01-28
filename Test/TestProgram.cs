@@ -28,7 +28,6 @@ namespace PgSql
         public static void Main() {
             var database = DatabaseClass.GetInstance();
             database.OpenConnection();
-            database.ExecuteNonQueryAsync($"INSERT INTO Sessions (SessionId, UserId) VALUES ('{"kjhbf"}', '{1}')");
             database.CloseConnection();
             Console.ReadKey();
         }
