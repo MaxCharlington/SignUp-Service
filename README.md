@@ -1,2 +1,2 @@
 # SignUp-Service
-This is a service for signing up to any organization for a service
+This is a service for finding an organization for a service
