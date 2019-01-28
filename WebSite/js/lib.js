@@ -1,14 +1,15 @@
-//Request ctor
-function CreateRequest(cmdId, StrData, IntData) {
-    var Request = {
-        cmdId: null,
-        StrData: null,
-        IntData: null,
-    };
-    Request.cmdId = cmdId;
-    Request.StrData = StrData;
-    Request.IntData = IntData;
-    return Request;
+class Request {
+  constructor(cmdId, StrData, IntData) {    
+    this.cmdId = cmdId;
+    this.StrData = StrData;
+    this.IntData = IntData;
+  }
+}
+
+class Search {
+  constructor(txt) {
+    this.Input = txt;
+  }
 }
 
 /* Function that make a request to the server and returns
@@ -44,4 +45,17 @@ function ServerResponseAsyncTo(request, onRespond) {
             req.abort();
         }
     };
+}
+
+function changeBackground(color) {
+   document.body.style.background = color;
+}
+
+function onSearch() {
+  var search = new Search(document.getElementById("searchbar").value);
+  var request = new Request(0, JSON.stringify(search), 0);
+
+  ServerResponseAsyncTo(request, function (response) {
+      console.log(response);
+  });
 }

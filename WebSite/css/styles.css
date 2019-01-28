@@ -1,4 +1,15 @@
-﻿body
-{
-    background-color: aquamarine;
+﻿.table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fill-width {
+    width:100%;
+}
+
+#searchbar {
+	width: 100%;
+	max-width: 1000px;
+    padding: 10px;
+    margin: auto;
 }

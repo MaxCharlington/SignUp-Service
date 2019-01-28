@@ -5,22 +5,30 @@ namespace ClassLibrary
 {
     [DataContract]
     public class WorkerClass
-    {
+    {        
         [DataMember]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        [DataMember]
+        public string SecondName { get; set; }
+
+        [DataMember]
+        public string MiddleName { get; set; }
 
         [DataMember]
         public List<ServiceClass> Skills { get; set; }
 
         public WorkerClass()
         {
-            Name = "";
+            FirstName = SecondName = MiddleName = "";
             Skills = new List<ServiceClass>();
         }
 
-        public WorkerClass(string name, List<ServiceClass> skills = null)
+        public WorkerClass(string first, string second, string middle = "", List<ServiceClass> skills = null)
         {
-            Name = name;
+            FirstName = first;
+            SecondName = second;
+            MiddleName = middle;
             if (skills != null) {
                 Skills = skills;
             }

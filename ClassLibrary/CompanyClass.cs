@@ -13,25 +13,20 @@ namespace ClassLibrary
         public WorkTimeClass WorkTime { get; set; }
 
         [DataMember]
-        public List<ServiceClass> Services { get; set; } = new List<ServiceClass>();
-
-        [DataMember]
-        public List<WorkerClass> Workers{ get; set; } = new List<WorkerClass>();
+        public List<int> ServiceIds { get; set; } = new List<int>();
 
         public CompanyClass()
         {
             Name = "";
             WorkTime = new WorkTimeClass();
-            Services = new List<ServiceClass>();
-            Workers = new List<WorkerClass>();
+            ServiceIds = new List<int>();
         }
 
         public CompanyClass(string name, WorkTimeClass workTime)
         {
             Name = name;
-            WorkTime = workTime; 
-            Services = new List<ServiceClass>();
-            Workers = new List<WorkerClass>();
+            WorkTime = workTime;
+            ServiceIds = new List<int>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Net;
 using System.IO;
 using System.Text;
@@ -78,51 +79,24 @@ namespace Server
 
         public void RespondRequest(Request request)
         {
+            var validator = ValidateSession(request);
             byte[] response;
             if (request.Requested.HttpMethod == "GET")
             {
-                try
-                {
-                    request.Response.StatusCode = (int)HttpStatusCode.OK;
-                    if (request.Requested.Cookies.Count == 0)
-                    {
-                        string sessionId = Security.GetUniqueKey();
-                        Database.CreateSession(sessionId);
-                        request.Response.SetCookie(new Cookie("session", sessionId));
-                    }
-                    const string path = @"M:\YandexDisk\Projects\In progress\SignUp Service\WebSite";
-                    var url = request.Requested.RawUrl;
-                    if (url == "/")
-                    {
-                        response = Encoding.UTF8.GetBytes(File.ReadAllText(path + @"\index.html"));
-                        request.Response.ContentType = "text/html; charset=UTF-8";
-                    }
-                    else
-                    {
-                        response = Encoding.UTF8.GetBytes(File.ReadAllText(path + url.Replace('/', '\\')));
-                        request.Response.ContentType = $"{MimeMapping.GetMimeMapping(url)}; charset=UTF-8";
-                    }
-                }
-                catch (FileNotFoundException)
-                {
-                    request.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    response = new byte[0];
-                }
+                response = PrepareResponseToGET(request);
             }
             else if (request.Requested.HttpMethod == "POST")
             {
-                request.Response.StatusCode = (int)HttpStatusCode.OK;
-                RequestContext ctx = request.GetPostRequestData();
-                string requestText = JSON.Stringify(ctx);
-                response = Encoding.UTF8.GetBytes(requestText);
-                request.Response.ContentType = "application/json";
+                response = PrepareResponseToPOST(request);
             }
-            else //Unexpected HTTP method
+            else
             {
+                //Unexpected HTTP method
                 request.Response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
                 response = new byte[0];
             }
             request.Response.ContentLength64 = response.Length;
+            validator.Wait();
             using (Stream output = request.Response.OutputStream)
             {
                 output.Write(response, 0, response.Length);
@@ -133,6 +107,74 @@ namespace Server
         public async Task RespondRequestAsync(Request request)
         {
             await Task.Run(() => RespondRequest(request));
+        }
+
+        private async Task ValidateSession(Request request) {
+            await Task.Run(() =>
+            {
+                try
+                {
+                    request.Requested.Cookies["session"].ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    string sessionId = Security.GetUniqueKey();
+                    Database.CreateSession(sessionId);
+                    request.Response.AppendCookie(new Cookie("session", sessionId));
+                }
+            });
+        }
+
+        private byte[] PrepareResponseToGET(Request request)
+        {
+            try
+            {
+                request.Response.StatusCode = (int)HttpStatusCode.OK;
+                const string path = @"M:\YandexDisk\Projects\In progress\SignUp Service\WebSite";
+                var url = request.Requested.RawUrl;
+                if (url == "/")
+                {
+                    request.Response.ContentType = "text/html; charset=UTF-8";
+                    return Encoding.UTF8.GetBytes(File.ReadAllText(path + @"\index.html"));
+                }
+                else
+                {
+                    request.Response.ContentType = $"{MimeMapping.GetMimeMapping(url)}; charset=UTF-8";
+                    return Encoding.UTF8.GetBytes(File.ReadAllText(path + url.Replace('/', '\\')));
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                request.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return new byte[0];
+            }
+        }
+
+        private byte[] PrepareResponseToPOST(Request request)
+        {
+            request.Response.StatusCode = (int)HttpStatusCode.OK;
+            RequestContext ctx = request.GetPostRequestData();
+
+            string answer;
+            switch (ctx.CmdId)
+            {
+                //Searching request
+                case 0:
+                    string input = (JSON.Parse(ctx.StrData, typeof(ClassLibrary.SearchClass)) as ClassLibrary.SearchClass).Input;
+                    answer = new ClassLibrary.SearchResultClass(SearchMatchings(input)).ToJSON();
+                    break;
+                //Unknown request
+                default:
+                    answer = "";
+                    break;
+            }
+
+            request.Response.ContentType = "application/json";
+            return Encoding.UTF8.GetBytes(answer);
+        }
+
+        private string SearchMatchings(string input) {            
+            return input;
         }
     }
 }

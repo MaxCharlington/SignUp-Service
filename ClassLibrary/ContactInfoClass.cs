@@ -6,6 +6,9 @@ namespace ClassLibrary
     public class ContactInfoClass
     {
         [DataMember]
+        public int UserId { get; set; }
+
+        [DataMember]
         public string PhoneNumber { get; set; }
 
         [DataMember]

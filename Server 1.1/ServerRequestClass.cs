@@ -5,7 +5,7 @@ using ToolLibrary;
 
 namespace Server
 {
-    public class Request
+    public sealed class Request
     {
         public HttpListenerRequest Requested { get; private set; }
 
