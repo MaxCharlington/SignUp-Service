@@ -1,10 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
-namespace ToolLibrary
+namespace ClassLibrary
 {
     [DataContract]
-    public class RequestContext
+    public class RequestContext : IJSONConvertible
     {
+        public Type Type { get; } = typeof(RequestContext);
+
         public RequestContext() { }
 
         public RequestContext(int cmdId, string strData = "", int intData = 0) 

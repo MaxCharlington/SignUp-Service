@@ -26,9 +26,8 @@ namespace PgSql
     public class PostGreSQL
     {
         public static void Main() {
-            var database = DatabaseClass.GetInstance();
-            database.OpenConnection();
-            database.CloseConnection();
+            var test = new SearchClass();
+            Console.WriteLine(test.JSONStringify());
             Console.ReadKey();
         }
     }

@@ -1,10 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace ClassLibrary
 {
     [DataContract]
-    public class SearchClass
+    public class SearchClass : IJSONConvertible
     {
+        public Type Type { get; } = typeof(SearchClass);
+
         [DataMember]
         public string Input { get; private set; }
 

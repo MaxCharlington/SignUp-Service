@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace ClassLibrary
 {
     [DataContract]
-    public class WorkerClass
-    {        
+    public class WorkerClass : IJSONConvertible
+    {
+        public Type Type { get; } = typeof(WorkerClass);
+
         [DataMember]
         public string FirstName { get; set; }
 

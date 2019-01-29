@@ -1,10 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace ClassLibrary
 {
     [DataContract]
-    public class WorkTimeClass
+    public class WorkTimeClass : IJSONConvertible
     {
+        public Type Type { get; } = typeof(WorkTimeClass);
+
         [DataMember]
         public TimeClass[] WorkTimes { get; set; }
 

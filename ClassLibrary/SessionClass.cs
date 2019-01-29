@@ -1,10 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace ClassLibrary
 {
     [DataContract]
-    public class SessionClass
+    public class SessionClass : IJSONConvertible
     {
+        public Type Type { get; } = typeof(SessionClass);
+
         [DataMember]
         public int UserId { get; set; }
         

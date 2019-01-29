@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ToolLibrary;
+using ClassLibrary;
 using Database;
 
 namespace Server
@@ -35,6 +36,7 @@ namespace Server
         
         public int SessionRequestCount { private set; get; } = 0;
         private int UnhandledRequestsCount = 0;
+
 
         //IServer implementation
         public void StartServer(ushort port = 80)
@@ -109,6 +111,8 @@ namespace Server
             await Task.Run(() => RespondRequest(request));
         }
 
+
+        //Project related
         private async Task ValidateSession(Request request) {
             await Task.Run(() =>
             {
@@ -160,8 +164,8 @@ namespace Server
             {
                 //Searching request
                 case 0:
-                    string input = (JSON.Parse(ctx.StrData, typeof(ClassLibrary.SearchClass)) as ClassLibrary.SearchClass).Input;
-                    answer = new ClassLibrary.SearchResultClass(SearchMatchings(input)).ToJSON();
+                    string input = (ctx.StrData.JSONParse<SearchClass>()).Input;
+                    answer = new SearchResultClass(SearchMatchings(input)).JSONStringify();
                     break;
                 //Unknown request
                 default:

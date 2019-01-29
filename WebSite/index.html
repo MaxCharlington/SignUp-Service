@@ -17,17 +17,20 @@
 </head>
 <body>
     <header>
-        <div class="container-fluid">
-            <nav class="navbar fixed-top">
-                <input type="text" id="searchbar" placeholder="Поиск" oninput="onSearch()">
-            </nav>
-        </div>
+        <nav class="navbar fixed-top">
+            <div class="container search">
+                <input type="text" id="searchbar" placeholder="Поиск" oninput="onSearch()"><br/>
+                <div id="results">
+                </div>
+            </div>
+        </nav>
     </header>
     <content>
-        <script type="text/javascript" src="js\script.js"></script>
+
     </content>
     <footer>
 
     </footer>
+    <script type="text/javascript" src="js\script.js"></script>
 </body>
 </html>

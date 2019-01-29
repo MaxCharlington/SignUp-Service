@@ -56,6 +56,31 @@ function onSearch() {
   var request = new Request(0, JSON.stringify(search), 0);
 
   ServerResponseAsyncTo(request, function (response) {
-      console.log(response);
+      var results = document.getElementById("results");
+      results.innerHTML = "";
+      results.style.display = "none";
+      var responseText = JSON.parse(response).Answer;
+      if (responseText != "") {
+        results.style.display = "block";
+        var elem = document.createElement("span");        
+        elem.innerText = "Результаты:";
+        elem.style.marginBottom  = "100px";
+        results.appendChild(elem);
+
+        elem = document.createElement("div");
+        elem.classList.add('result');
+        elem.innerText = "Услуги: " + responseText;
+        results.appendChild(elem);
+
+        elem = document.createElement("div");
+        elem.classList.add('result');
+        elem.innerText = "Организации: " + responseText;
+        results.appendChild(elem);
+        
+        elem = document.createElement("div");
+        elem.classList.add('result');
+        elem.innerText = "Адреса: " + responseText;
+        results.appendChild(elem);
+      }
   });
 }

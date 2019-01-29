@@ -43,10 +43,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompanyClass.cs" />
     <Compile Include="ContactInfoClass.cs" />
+    <Compile Include="IJSONConvertible.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestContextClass.cs" />
     <Compile Include="SearchClass.cs" />

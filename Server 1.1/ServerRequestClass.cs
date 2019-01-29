@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 
-using ToolLibrary;
+using ClassLibrary;
 
 namespace Server
 {
@@ -26,8 +26,7 @@ namespace Server
                 Stream body = Requested.InputStream;
                 StreamReader reader = new StreamReader(body);
                 string json = reader.ReadToEnd();
-                RequestContext context = new RequestContext();
-                context = (RequestContext)JSON.Parse(json, context.GetType());
+                RequestContext context = json.JSONParse<RequestContext>();
                 return context;
             }
             else return null;

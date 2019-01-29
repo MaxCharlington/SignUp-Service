@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 
-using ToolLibrary;
+using ClassLibrary;
 
 namespace Client
 {
@@ -14,7 +14,7 @@ namespace Client
         {
             WebRequest webRequest = WebRequest.Create("http://" + IPAddress + "/");
             webRequest.Method = "POST";
-            byte[] byteArray = Encoding.UTF8.GetBytes(JSON.Stringify(context));
+            byte[] byteArray = Encoding.UTF8.GetBytes(context.JSONStringify());
             webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.ContentLength = byteArray.Length;
             using (Stream dataStream = webRequest.GetRequestStream())

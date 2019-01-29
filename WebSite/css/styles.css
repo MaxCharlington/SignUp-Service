@@ -7,9 +7,93 @@
     width:100%;
 }
 
-#searchbar {
+body {
+	background-color: #fcfcfc;
+	color: #35114b;
+}
+
+.search {
+    position:fixed;
+    left: 0;
+    right: 0;
+    top: 10px;
+	max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#searchbar{
+    left: 50%;
+	outline: none;
 	width: 100%;
-	max-width: 1000px;
     padding: 10px;
     margin: auto;
+    -webkit-box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+	-moz-box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+	box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+	border: 0;
+	z-index: 1;
+	border-radius: 3px;
+	background-color: #fcfcfc;
+}
+
+#results {	
+	position:relative;
+	background-color: #fcfcfc;
+	padding: 10px;
+	width: 98%;
+    margin: auto;
+    z-index: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;    
+    -webkit-box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+	-moz-box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+	box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+}
+
+.result {
+	background-color: #fcfcfc;
+	padding: 10px;
+	margin-top: 7px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(67,21,94,0.4);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(67,21,94,0.4);
+	box-shadow: 0px 0px 10px 0px rgba(67,21,94,0.4);
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	transition: 0.3s;
+	border-radius: 3px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.result:hover {
+	background-color: #531a75;
+	color: #fcfcfc;
+}
+
+.result:active {
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(67,21,94,0.4);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(67,21,94,0.4);
+	box-shadow: 0px 0px 10px 4px rgba(67,21,94,0.4);
+}
+
+nav {
+	background-color: #531a75;
+	height: 67px;	
+    -webkit-box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+	-moz-box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+	box-shadow: 0px 0px 10px 1.5px rgba(67,21,94,0.4);
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
