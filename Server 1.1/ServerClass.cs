@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 using ToolLibrary;
 using ClassLibrary;
 using Database;
+using System.Diagnostics;
 
 namespace Server
 {
-    public class Server : IServer
+    public class Server
     {
         //Singleton
         private static Server instance = null;
         private Server() { }
-        public static IServer GetInstance()
+        public static Server GetInstance()
         {
             if (instance == null)
                 instance = new Server();
@@ -50,7 +51,35 @@ namespace Server
             _HttpListener = new HttpListener();
             _HttpListener.Prefixes.Add($"http://*:{Port}/");
             _HttpListener.Start();
+            #if DEBUG
+            var fileSystemWatcher = new FileSystemWatcher();
+            fileSystemWatcher.Changed += ReloadServer;
+            fileSystemWatcher.Path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            fileSystemWatcher.EnableRaisingEvents = true;
+            #endif
             Task.Run(() => onStart());
+        }
+
+        private static void ReloadServer(object sender, FileSystemEventArgs e) {
+            (sender as FileSystemWatcher).Changed -= ReloadServer;
+            if (instance != null) {
+                instance.StopServer();
+                ServerInstance.running = false;
+                ServerInstance.ReqestHandler.Wait();
+                ToolClass.Print("Server closed for HTTP requests", ConsoleColor.Red);
+                ToolClass.Print("Server is Updated\nReloading...", ConsoleColor.DarkGreen);
+            }
+            try
+            {
+                var proc = new Process();
+                proc.StartInfo.WorkingDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                proc.StartInfo.FileName = "Server 1.1.bat";
+                System.Threading.Thread.Sleep(10000);
+                proc.Start();
+            }
+            catch { }
+            System.Threading.Thread.Sleep(4000);
+            Environment.Exit(1);
         }
         
         public void StopServer()

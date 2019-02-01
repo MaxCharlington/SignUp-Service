@@ -26,8 +26,6 @@ namespace PgSql
     public class PostGreSQL
     {
         public static void Main() {
-            var test = new SearchClass();
-            Console.WriteLine(test.JSONStringify());
             Console.ReadKey();
         }
     }

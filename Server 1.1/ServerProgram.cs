@@ -5,30 +5,30 @@ using ToolLibrary;
 
 namespace Server
 {
-    class ServerInstance
+    public class ServerInstance
     {
-        private static bool finished = false;
-        private static Server server = (Server)Server.GetInstance();
-        
+        private static Server serverInstance = Server.GetInstance();
+
+        public static bool running = true;
+        public static Task ReqestHandler;
+        public static Task UI;
+
         private static void Main()
         {
             Console.Title = "Server - SignUp Service";
-            server.StartServer();
-
-            //Handles incoming HTTP requests
-            HandleServerRequests();
-
-            //Handles console UI and stops server
-            HandleConsoleCommands().Wait();
+            serverInstance.StartServer();
+            ReqestHandler = HandleServerRequests();
+            UI = HandleConsoleCommands();
+            UI.Wait();
         }
         
         private static async Task HandleServerRequests()
         {
-            while (!finished)
+            while (running)
             {
                 try
                 {
-                    server.RespondRequestAsync(await server.GetRequestAsync());
+                    serverInstance.RespondRequestAsync(await serverInstance.GetRequestAsync());
                 }
                 catch
                 {
@@ -42,25 +42,26 @@ namespace Server
             await Task.Run(() =>
             {
                 ToolClass.Print("Server is open for requests", ConsoleColor.Green);
-                while (!finished)
+                while (running)
                 {
                     string internalCommand = Console.ReadLine();
                     switch (internalCommand)
                     {
                         case "stop":
-                            finished = true;
-                            server.StopServer();
+                            serverInstance.StopServer();
+                            running = false;
                             break;
                         case "cpu":
                             ToolClass.Print($"Current CPU usage is {Hardware.CPUUsage()}%\nCount of server threads is {Hardware.ThreadCount()}", ConsoleColor.Yellow);
                             break;
                         case "req":
-                            ToolClass.Print($"{server.SessionRequestCount} requests are handled in the session", ConsoleColor.Yellow);
+                            ToolClass.Print($"{serverInstance.SessionRequestCount} requests are handled in the session", ConsoleColor.Yellow);
                             break;
                         default:
                             break;
                     }
                 }
+                ReqestHandler.Wait();
                 ToolClass.Print("Server closed for HTTP requests", ConsoleColor.Red);
                 Console.ReadKey();
             });

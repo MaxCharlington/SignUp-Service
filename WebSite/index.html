@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -16,21 +17,30 @@
     <title>SignUp</title>
 </head>
 <body>
-    <header>
-        <nav class="navbar fixed-top">
-            <div class="container search">
-                <input type="text" id="searchbar" placeholder="Поиск" oninput="onSearch()"><br/>
-                <div id="results">
+    <header class = "container-max-width fixed-top">
+        <nav class="navbar align-content-center">
+            <div class="row">
+                <div class="search col-12 col-md-8 col-lg-8 col-xl-6">
+                    <input type="text" id="searchbar" placeholder="Поиск" oninput="onSearch()"><br/>
+                    <div id="results"></div>
                 </div>
             </div>
         </nav>
     </header>
-    <content>
+    <content>        
+        <div class="container-max-width">
+            <div class="row">
+                <div class="col-4">Some text</div>
 
+                <div class="col-12">
+                    More text
+                </div>
+            </div>
+        </div>
     </content>
-    <footer>
+  <footer>
 
-    </footer>
-    <script type="text/javascript" src="js\script.js"></script>
+  </footer>
+  <script type="text/javascript" src="js\script.js"></script>
 </body>
 </html>

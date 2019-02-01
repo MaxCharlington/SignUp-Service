@@ -70,16 +70,31 @@ function onSearch() {
         elem = document.createElement("div");
         elem.classList.add('result');
         elem.innerText = "Услуги: " + responseText;
+        elem.onclick = function() {
+          document.getElementById("searchbar").value = "";
+          results.innerHTML = "";
+          results.style.display = "none";
+        }
         results.appendChild(elem);
 
         elem = document.createElement("div");
         elem.classList.add('result');
         elem.innerText = "Организации: " + responseText;
+        elem.onclick = function() {
+          document.getElementById("searchbar").value = "";
+          results.innerHTML = "";
+          results.style.display = "none";
+        }
         results.appendChild(elem);
-        
+
         elem = document.createElement("div");
         elem.classList.add('result');
         elem.innerText = "Адреса: " + responseText;
+        elem.onclick = function() {
+          document.getElementById("searchbar").value = "";
+          results.innerHTML = "";
+          results.style.display = "none";
+        }
         results.appendChild(elem);
       }
   });
