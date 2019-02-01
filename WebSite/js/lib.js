@@ -53,49 +53,71 @@ function changeBackground(color) {
 
 function onSearch() {
   var search = new Search(document.getElementById("searchbar").value);
-  var request = new Request(0, JSON.stringify(search), 0);
+  //var request = new Request(0, JSON.stringify(search), 0)
+  var results = document.getElementById("results");
+  var aside = document.getElementsByTagName("aside")[0];
+  results.innerHTML = "";
+  results.style.display = "none";
+  aside.style.display = "block";
+  var responseText = search.Input;//TMP
+  
+  if (responseText != "") {
+    aside.style.display = "none";
+    results.style.display = "block";
+    var elem = document.createElement("span");        
+    elem.innerText = "Результаты:";
+    elem.style.marginBottom  = "100px";
+    results.appendChild(elem);
 
-  ServerResponseAsyncTo(request, function (response) {
-      var results = document.getElementById("results");
-      results.innerHTML = "";
-      results.style.display = "none";
-      var responseText = JSON.parse(response).Answer;
-      if (responseText != "") {
-        results.style.display = "block";
-        var elem = document.createElement("span");        
-        elem.innerText = "Результаты:";
-        elem.style.marginBottom  = "100px";
-        results.appendChild(elem);
+    elem = document.createElement("div");
+    elem.classList.add('result');
+    elem.innerText = "Услуги:  " + responseText;
+    elem.onclick = function() {
+    }
+    results.appendChild(elem);
 
-        elem = document.createElement("div");
-        elem.classList.add('result');
-        elem.innerText = "Услуги: " + responseText;
-        elem.onclick = function() {
-          document.getElementById("searchbar").value = "";
-          results.innerHTML = "";
-          results.style.display = "none";
-        }
-        results.appendChild(elem);
+    elem = document.createElement("div");
+    elem.classList.add('result');
+    elem.innerText = "Организации:  " + responseText;
+    elem.onclick = function() {
+    }
+    results.appendChild(elem);
 
-        elem = document.createElement("div");
-        elem.classList.add('result');
-        elem.innerText = "Организации: " + responseText;
-        elem.onclick = function() {
-          document.getElementById("searchbar").value = "";
-          results.innerHTML = "";
-          results.style.display = "none";
-        }
-        results.appendChild(elem);
+    elem = document.createElement("div");
+    elem.classList.add('result');
+    elem.innerText = "Адреса:  " + responseText;
+    elem.onclick = function() {
+    }
+    results.appendChild(elem);
+  }
+}
 
-        elem = document.createElement("div");
-        elem.classList.add('result');
-        elem.innerText = "Адреса: " + responseText;
-        elem.onclick = function() {
-          document.getElementById("searchbar").value = "";
-          results.innerHTML = "";
-          results.style.display = "none";
-        }
-        results.appendChild(elem);
-      }
-  });
+
+window.onscroll = () => scrollFunction();
+
+var prevScroll = 0; 
+var currScroll;
+var currPos = 0;
+var isOpening = true;
+
+
+function scrollFunction() {
+  let nav = document.getElementsByClassName("navbar")[0];
+  currScroll = document.documentElement.scrollTop;
+  if (prevScroll - currScroll < 0) {
+    if (isOpening) {
+      nav.classList.remove("open"); 
+      nav.className += " " + "close";
+      setTimeout(()=>{nav.style.top = "-60px";}, 300);
+      isOpening = false;
+    }
+  } else {
+    if (!isOpening) {
+      nav.classList.remove("close");
+      nav.className += " " + "open";
+      setTimeout(()=>{nav.style.top = "0px";}, 300);
+      isOpening = true;
+    }
+  }
+  prevScroll = currScroll;
 }

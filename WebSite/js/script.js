@@ -24,6 +24,6 @@ window.onload = () => {
 	//tmp
 	changeBackground("#531a75");*/
 
-    var results = document.getElementById("results");
-    results.style.display = "none";
+    /*var results = document.getElementById("results");
+    results.style.display = "none";*/
 };
